@@ -2,6 +2,7 @@ class Solution {
 public:
     int majorityElement(vector<int>& nums) {
         // O(n) and O(1) space 
+        // This algorithm is called Moore Voting Algorithm.
         int cnt = 0,k=nums[0];
         for(int i=0;i<nums.size();i++)
         {
