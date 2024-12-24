@@ -17,10 +17,4 @@ public:
         }
         return glb_max;
     }
-
-    // Nattee's Algorithm.
-    // Divide & Conquer Approach.
-
-
-
 };
