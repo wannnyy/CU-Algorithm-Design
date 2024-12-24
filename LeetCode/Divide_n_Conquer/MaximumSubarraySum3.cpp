@@ -1,5 +1,5 @@
 // Nattee's Algorithm
-// time: O(n)
+// time: O(nlogn)
 #include <iostream>
 #include <vector>
 #include <algorithm>
