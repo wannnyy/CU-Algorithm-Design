@@ -11,7 +11,7 @@ int get_sum(vector<int> &s, int stop, int start) {
 }
 
 int solve(vector<int> &v, int start, int stop, vector<int> &s) {
-    if( start == stop)
+    if(start == stop)
         return v[start];
 
     int m = (start + stop) / 2;

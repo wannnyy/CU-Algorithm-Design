@@ -27,7 +27,7 @@ int maxCrossingSum(vector<int> &v, int start, int mid, int stop) {
 }
 
 int solve(vector<int> &v, int start, int stop) {
-    if (start == stop - 1)
+    if (start == stop)
         return v[start];
 
     int mid = (start + stop) / 2;
