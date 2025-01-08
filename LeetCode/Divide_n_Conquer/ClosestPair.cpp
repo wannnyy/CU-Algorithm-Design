@@ -13,7 +13,7 @@ int main()
         cin >> x >> y ;
         v.push_back({x,y});   
     }
-
+    
     
 
 
