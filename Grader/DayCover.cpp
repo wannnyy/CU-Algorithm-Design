@@ -17,7 +17,7 @@ void recur(int cnt,int dpt,int idx)
 
     if(dpt >= mn || cnt == n)return;
 
-    bitset<1000> cur = current;
+    bitset<1000> cur = current;// This might be the bottle neck
     for(int i=idx;i<m;i++)
     {
         current = current | student[i];
