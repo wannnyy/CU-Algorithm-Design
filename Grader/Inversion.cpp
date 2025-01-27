@@ -3,6 +3,8 @@
 
 using namespace std;
 
+
+
 int main()
 {
     int n;
@@ -14,13 +16,18 @@ int main()
         cin >> v[i];
     }
 
-    for(int i=0;i<n-1;i++)
-    {
-        for(int j=i+1;j<n;j++)
-        {
-            if(v[i]>v[j])cnt++;
-        }
-    }
-    cout << cnt;
+    
+
+
+    // O(n^2) approach
+    // for(int i=0;i<n-1;i++)
+    // {
+    //     for(int j=i+1;j<n;j++)
+    //     {
+    //         if(v[i]>v[j])cnt++;
+    //     }
+    // }s
+
+    // cout << cnt;
     return 0;
 }
