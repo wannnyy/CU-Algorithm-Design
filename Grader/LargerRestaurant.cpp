@@ -1,26 +1,57 @@
 #include <bits/stdc++.h>
 
 using namespace std;
-int n, a;
-vector<long long> t, c;
+#define ll long long
+int n, m;
+vector<ll> chef;
 
-// queue<long long> c;
-priority_queue<pair<long, long>> seat;
-map<long long, long long> mp;
+ll solve(ll time)
+{
+    ll tmp = 0;
+    for (int i = 0; i < n; i++)
+    {
+        tmp += time / chef[i];
+    }
+    return tmp;
+}
 
 int main()
 {
-    cin >> n >> a;
-    t.resize(n);
-    c.resize(a);
+    cin >> n >> m;
+    chef.resize(n);
     for (int i = 0; i < n; i++)
     {
-        cin >> t[i];
-        seat.push({t[i], i});
+        cin >> chef[i];
     }
-    for (int i = 0; i < a; i++)
+
+    sort(chef.begin(), chef.end());
+    ll customer;
+    for (int i = 0; i < m; i++)
     {
-        cin >> c[i];
+        cin >> customer;
+        customer -= n;
+        if (customer <= 0)
+        {
+            cout << "0" << '\n';
+            continue;
+        }
+
+        ll left = 1, right = chef[0] * customer;
+        ll mid = (left + right) / 2;
+        while (left < right)
+        {
+            ll tmp = solve(mid); // total served customers
+            if (tmp < customer)
+            {
+                left = mid + 1;
+            }
+            else
+            {
+                right = mid;
+            }
+            mid = (left + right) / 2;
+        }
+        cout << right << '\n';
     }
 
     return 0;
