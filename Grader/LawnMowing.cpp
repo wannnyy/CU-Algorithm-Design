@@ -33,22 +33,23 @@ ll solve(int l, int r)
     }
     // return cur;
 
+    // cur -= (r - a + 1) * k;
     int mid = (l + r) / 2;
-    // if (cur > b)
-    // {
-    //     cout << "> " << l << " " << mid << '\n';
-    //     return solve(l, mid);
-    // }
-    // else
-    // {
-    //     cout << "< " << mid + 1 << " " << r << '\n';
-    //     return solve(mid + 1, r);
-    // }
-    // return max(solve(l, mid), solve(mid + 1, r));
-    if (cur <= b)
-        return max(solve(l, mid), solve(mid + 1, r));
-    else
+    if (cur > b)
+    {
+        // cout << "> " << l << " " << mid << '\n';
         return solve(l, mid);
+    }
+    else
+    {
+        // cout << "< " << mid + 1 << " " << r << '\n';
+        return solve(mid + 1, r);
+    }
+    // return max(solve(l, mid), solve(mid + 1, r));
+    // if (cur <= b)
+    //     return max(solve(l, mid), solve(mid + 1, r));
+    // else
+    //     return solve(l, mid);
 }
 
 int main()
