@@ -17,6 +17,8 @@ int main()
     f[3] = 15;
     for (int i = 4; i <= n; i++)
     {
+        // 2 * f[i-1] comes from the fact that we could always add 0 to the end.
+        // and we can add 1 or 2 at the end.
         f[i] = (2 * f[i - 1] + f[i - 3]) % mod;
     }
 
