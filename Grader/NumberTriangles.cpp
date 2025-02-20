@@ -18,6 +18,8 @@ int main()
     }
     // cout << '\n';
 
+    // bottom-up approach
+
     for (int i = n - 2; i >= 0; i--)
     {
         for (int j = 2; j < 2 * n - 1; j++)
