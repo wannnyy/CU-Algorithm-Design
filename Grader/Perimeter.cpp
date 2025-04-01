@@ -1,19 +1,12 @@
 #include <bits/stdc++.h>
+
 using namespace std;
+int n, e, k;
 
 int main()
 {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-
-    int n, e, k;
     cin >> n >> e >> k;
-
-    // We have vertices labeled 0..n
-    // 0 is the base, and 1..n are the possible outposts
     vector<vector<int>> adj(n + 1);
-
-    // Read the e roads
     for (int i = 0; i < e; i++)
     {
         int a, b;
@@ -23,28 +16,28 @@ int main()
         adj[b].push_back(a);
     }
 
-    // BFS from node 0
-    vector<int> dist(n + 1, -1);
-    dist[0] = 0;
     queue<int> q;
+    vector<int> dist(n + 1, -1);
     q.push(0);
+    dist[0] = 0;
 
     while (!q.empty())
     {
         int u = q.front();
         q.pop();
 
-        for (auto &v : adj[u])
+        for (auto x : adj[u])
         {
-            if (dist[v] == -1)
+            if (dist[x] <= k)
             {
-                dist[v] = dist[u] + 1;
-                q.push(v);
+                if (dist[x] == -1)
+                {
+                    dist[x] = dist[u] + 1;
+                    q.push(x);
+                }
             }
         }
     }
-
-    // Count how many vertices in 1..n have distance = k
     int answer = 0;
     for (int i = 1; i <= n; i++)
     {
@@ -55,6 +48,5 @@ int main()
     }
 
     cout << answer << "\n";
-
     return 0;
 }
