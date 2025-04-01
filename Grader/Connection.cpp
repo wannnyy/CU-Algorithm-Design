@@ -1,70 +1,59 @@
 #include <bits/stdc++.h>
-using namespace std;
 
-static const int MAXN = 1000;
+using namespace std;
 
 int main()
 {
     ios::sync_with_stdio(false);
     cin.tie(NULL);
+    int n, e, k;
+    cin >> n >> e >> k;
+    vector<vector<int>> adj(n);
 
-    int N, E, K;
-    cin >> N >> E >> K;
-
-    vector<vector<int>> adj(N);
-
-    // Read E edges
-    for (int i = 0; i < E; i++)
+    for (int i = 0; i < e; i++)
     {
-        int A, B;
-        cin >> A >> B;
-        adj[A].push_back(B);
-        adj[B].push_back(A);
+        int a, b;
+        cin >> a >> b;
+        adj[a].push_back(b);
+        adj[b].push_back(a);
     }
 
-    int answer = 1; // At least the student itself is always counted
+    int answer = 1;
 
-    // For each student, do a BFS up to distance K
-    for (int start = 0; start < N; start++)
+    for (int i = 0; i < n; i++)
     {
-        vector<int> dist(N, -1);
-        dist[start] = 0;
+        vector<int> dist(n, -1);
 
         queue<int> q;
-        q.push(start);
-
+        dist[i] = 0;
+        q.push(i);
         while (!q.empty())
         {
             int u = q.front();
             q.pop();
-
-            // If we haven't reached K steps, we can explore further
-            if (dist[u] < K)
+            if (dist[u] < k)
             {
-                for (int v : adj[u])
+                for (auto x : adj[u])
                 {
-                    if (dist[v] == -1)
+                    if (dist[x] == -1)
                     {
-                        dist[v] = dist[u] + 1;
-                        q.push(v);
+                        q.push(x);
+                        dist[x] = dist[u] + 1;
                     }
                 }
             }
         }
-
-        // Count how many are reachable within distance K
         int reachable = 0;
-        for (int i = 0; i < N; i++)
+        for (int j = 0; j < n; j++)
         {
-            if (dist[i] != -1 && dist[i] <= K)
+            if (dist[j] != -1 && dist[j] <= k)
             {
                 reachable++;
             }
         }
-
         answer = max(answer, reachable);
     }
+    cout << answer;
 
-    cout << answer << "\n";
     return 0;
 }
