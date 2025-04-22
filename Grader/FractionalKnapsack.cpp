@@ -26,7 +26,7 @@ int main()
         maxPQ.push({tv[i] / tw[i], i});
     }
 
-    while (w > 0 && !pq.empty())
+    while (w > 0 && !maxPQ.empty())
     {
         auto [_, idx] = maxPQ.top();
         maxPQ.pop();

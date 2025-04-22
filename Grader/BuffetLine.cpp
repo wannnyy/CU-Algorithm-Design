@@ -33,7 +33,7 @@ int main()
         }
         else if (v[i] == 1 && start)
         {
-            if (abs(i - idx_start) > range)
+            if (abs(i - idx_start) >= range)
             {
                 idx_start = i;
                 cnt++;
